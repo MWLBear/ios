@@ -36,6 +36,9 @@
 - (BOOL) backgroundInstantUploadEnabled;
 - (void) setBackgroundInstantUploadEnabled:(BOOL)enabled;
 
+-(BOOL)phoneNetInstantUploadEnabled;
+- (void)setphoneNetInstantUploadEnabled:(BOOL)enabled;
+
 - (void) activate;
 
 @end

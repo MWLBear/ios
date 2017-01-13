@@ -286,6 +286,7 @@
 		14EC1956195B297F00B02AB6 /* sharedItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14EC1954195B297F00B02AB6 /* sharedItem@2x.png */; };
 		14EFCAEB17FAFEAA007A38B6 /* MainAppIcon_76-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 14EFCAEA17FAFEAA007A38B6 /* MainAppIcon_76-76.png */; };
 		14EFCAED17FAFF48007A38B6 /* MainAppIcon_40-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 14EFCAEC17FAFF48007A38B6 /* MainAppIcon_40-40.png */; };
+		189303511E0D1194007AD750 /* ELCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 189303501E0D1194007AD750 /* ELCButton.m */; };
 		400560751A03B1190030D502 /* MainAppIcon_40-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 400560741A03B1190030D502 /* MainAppIcon_40-40@2x.png */; };
 		400560771A03B4F80030D502 /* MainAppIcon_40-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 400560761A03B4F80030D502 /* MainAppIcon_40-40@3x.png */; };
 		4005607C1A03CEEE0030D502 /* MainAppIcon_60-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4005607B1A03CEEE0030D502 /* MainAppIcon_60-60@2x.png */; };
@@ -1402,6 +1403,8 @@
 		14EC1954195B297F00B02AB6 /* sharedItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharedItem@2x.png"; sourceTree = "<group>"; };
 		14EFCAEA17FAFEAA007A38B6 /* MainAppIcon_76-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainAppIcon_76-76.png"; sourceTree = "<group>"; };
 		14EFCAEC17FAFF48007A38B6 /* MainAppIcon_40-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainAppIcon_40-40.png"; sourceTree = "<group>"; };
+		1893034F1E0D1193007AD750 /* ELCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCButton.h; sourceTree = "<group>"; };
+		189303501E0D1194007AD750 /* ELCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCButton.m; sourceTree = "<group>"; };
 		4002B01A1D421A7100520FB3 /* sq */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sq; path = sq.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4002B01C1D421A8300520FB3 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		400560741A03B1190030D502 /* MainAppIcon_40-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainAppIcon_40-40@2x.png"; sourceTree = "<group>"; };
@@ -2378,6 +2381,8 @@
 		13A9FCDD17E9857300FF48D7 /* ELCPickerLib */ = {
 			isa = PBXGroup;
 			children = (
+				1893034F1E0D1193007AD750 /* ELCButton.h */,
+				189303501E0D1194007AD750 /* ELCButton.m */,
 				596C05F61CF47278004BCF51 /* ELCAlbumPickerController.h */,
 				596C05F71CF47278004BCF51 /* ELCAlbumPickerController.m */,
 				596C05F81CF47278004BCF51 /* ELCAsset.h */,
@@ -3952,11 +3957,14 @@
 				LastUpgradeCheck = 0800;
 				TargetAttributes = {
 					1324297715ADBB3700DF823E = {
-						DevelopmentTeam = 9B5WD74GWJ;
+						DevelopmentTeam = WAB5TVK35P;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -3965,7 +3973,7 @@
 					};
 					EA6606941AA767F700BA2C65 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 9B5WD74GWJ;
+						DevelopmentTeam = WAB5TVK35P;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3978,7 +3986,7 @@
 					};
 					EAB0AB3119ED356A00764C31 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 9B5WD74GWJ;
+						DevelopmentTeam = WAB5TVK35P;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3991,7 +3999,7 @@
 					};
 					EAB0AB3F19ED356A00764C31 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 9B5WD74GWJ;
+						DevelopmentTeam = WAB5TVK35P;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -4800,6 +4808,7 @@
 				148DD6BD1778695E00FB9977 /* AddAccountViewController.m in Sources */,
 				EAAD688F1C560AF2005F3B28 /* ShareUtils.m in Sources */,
 				14987095187DB14A000D9C49 /* NotificationStatusBarViewController.m in Sources */,
+				189303511E0D1194007AD750 /* ELCButton.m in Sources */,
 				148DD6C11778697100FB9977 /* AccountCell.m in Sources */,
 				400A637B1B4FD75600890579 /* IFTTTTransform3DAnimation.m in Sources */,
 				148DD6C71778698300FB9977 /* EditAccountViewController.m in Sources */,
@@ -5311,7 +5320,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WAB5TVK35P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5338,7 +5347,7 @@
 					"$(SRCROOT)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.owncloud.iOSmobileapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.owncloud.yayawan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -5347,6 +5356,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Owncloud iOs Client/Owncloud iOS Client-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5363,7 +5373,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WAB5TVK35P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5385,7 +5395,7 @@
 					"$(SRCROOT)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.owncloud.iOSmobileapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.owncloud.yayawan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -5393,6 +5403,7 @@
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Owncloud iOs Client/Owncloud iOS Client-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5470,6 +5481,7 @@
 				CODE_SIGN_ENTITLEMENTS = "OC Share Sheet/OC Share Sheet.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WAB5TVK35P;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -5495,7 +5507,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.owncloud.iOSmobileapp.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.owncloud.yayawan.OC-Share-Sheet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -5517,6 +5529,7 @@
 				CODE_SIGN_ENTITLEMENTS = "OC Share Sheet/OC Share Sheet.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WAB5TVK35P;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
@@ -5539,7 +5552,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.owncloud.iOSmobileapp.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.owncloud.yayawan.OC-Share-Sheet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -5567,6 +5580,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = WAB5TVK35P;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5602,12 +5616,13 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-Obj-C";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.owncloud.iOSmobileapp.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.owncloud.yayawan.ownCloudExtApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Owncloud iOs Client/OCExtensions-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -5630,6 +5645,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = WAB5TVK35P;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5660,12 +5676,13 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-Obj-C";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.owncloud.iOSmobileapp.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.owncloud.yayawan.ownCloudExtApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Owncloud iOs Client/OCExtensions-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -5689,6 +5706,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = WAB5TVK35P;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
@@ -5717,7 +5735,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.owncloud.iOSmobileapp.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.owncloud.yayawan.ownCloudExtAppFileProvider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -5746,6 +5764,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = WAB5TVK35P;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5769,7 +5788,7 @@
 					"$(PROJECT_DIR)",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.owncloud.iOSmobileapp.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.owncloud.yayawan.ownCloudExtAppFileProvider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;

@@ -12,11 +12,12 @@
 #import "ELCConsole.h"
 #import "ELCConstants.h"
 #import <Photos/Photos.h>
-
+#import "ELCButton.h"
 
 @interface ELCAssetTablePicker () <PHPhotoLibraryChangeObserver>
 
 @property (nonatomic, assign) int columns;
+@property(nonatomic,strong) ELCButton *allButton;
 
 @end
 
@@ -47,8 +48,18 @@
         
     } else {
         UIBarButtonItem *doneButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
-        [self.navigationItem setRightBarButtonItem:doneButtonItem];
+        
+        _allButton = [[ELCButton alloc]initWithFrame:CGRectMake(0, 0, 80, 40)];
+        [_allButton setTitle:@"全选" forState:UIControlStateNormal];
+        [_allButton setTitle:@"全不选" forState:UIControlStateSelected];
+        [_allButton addTarget:self action:@selector(allCellClick:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *allButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_allButton];
+        
+        // [self.navigationItem setRightBarButtonItem:doneButtonItem];
+        [self.navigationItem setRightBarButtonItems:@[doneButtonItem,allButtonItem]];
+        
         [self.navigationItem setTitle:NSLocalizedString(@"Loading...", nil)];
+
     }
 
 	
@@ -190,6 +201,23 @@
             [self.navigationItem setTitle:self.assetGroupName];
         });
     }
+}
+
+-(void)allCellClick:(UIButton*)sender{
+    
+    _allButton.selected = !sender.selected;
+    
+    NSMutableArray *muarry = [NSMutableArray array];
+  
+    [self.elcAssets enumerateObjectsUsingBlock:^(ELCAsset *elcAsset, NSUInteger idx, BOOL *stop) {
+        elcAsset.selected = _allButton.selected;
+        [muarry addObject:elcAsset];
+        
+    }];
+    
+    [self.tableView reloadData];
+    
+    
 }
 
 

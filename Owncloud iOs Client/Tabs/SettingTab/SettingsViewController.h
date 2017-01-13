@@ -24,7 +24,7 @@
 #import "AddAccountViewController.h"
 #import "MBProgressHUD.h"
 #import "SyncFolderManager.h"
-
+#import "AFNetworking.h"
 
 typedef enum {
     help = 0,
@@ -42,6 +42,7 @@ typedef enum {
 @property(nonatomic,strong)UISwitch *switchInstantUploadPhotos;
 @property(nonatomic,strong)UISwitch *switchInstantUploadVideos;
 @property(nonatomic,strong)UISwitch *switchBackgroundInstantUpload;
+@property(nonatomic,strong)UISwitch *switchCanNotInstantUpload; //手机网络下禁止自动上传
 @property(nonatomic, strong)DetailViewController *detailViewController;
 @property(nonatomic, strong)UserDto *user;
 
@@ -62,6 +63,7 @@ typedef enum {
 @property (nonatomic,strong) UIActionSheet *menuAccountActionSheet;
 @property (nonatomic,strong) UserDto *selectedUserAccount;
 
+@property (nonatomic,strong) AFNetworkReachabilityManager *manager;
 - (IBAction)changeSwitchPasscode:(id)sender;
 - (IBAction)changeSwitchTouchID:(id)sender;
 - (IBAction)changeSwitchInstantUpload:(id)sender;

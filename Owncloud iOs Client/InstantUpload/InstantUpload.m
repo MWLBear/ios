@@ -23,6 +23,7 @@
 #import "ManageUsersDB.h"
 #import "UserDto.h"
 #import "UtilsUrls.h"
+#import "Reachability.h"
 
 #define ACTIVE_USER ((AppDelegate *)[[UIApplication sharedApplication] delegate]).activeUser
 
@@ -71,6 +72,10 @@
 
 - (BOOL) backgroundInstantUploadEnabled {
     return ACTIVE_USER.backgroundInstantUpload;
+}
+
+-(BOOL)phoneNetInstantUploadEnabled{
+    return ACTIVE_USER.phoneNetCanInstantUpload;
 }
 
 - (void) setImageInstantUploadEnabled:(BOOL)enabled {
@@ -170,6 +175,19 @@
     }
 }
 
+-(void)setphoneNetInstantUploadEnabled:(BOOL)enabled
+{
+    if (enabled != self.phoneNetInstantUploadEnabled) {
+        if (enabled) {
+            ACTIVE_USER.phoneNetCanInstantUpload = YES;
+        }
+        else {
+            ACTIVE_USER.phoneNetCanInstantUpload = NO;
+        }
+    }
+    
+}
+
 - (void) activate {
     if (self.imageInstantUploadEnabled || self.videoInstantUploadEnabled) {
         if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {
@@ -202,6 +220,12 @@
 
 - (void) attemptUpload {
     @synchronized (self) {
+        
+        //wifi下才执行
+        if (!([[Reachability reachabilityForLocalWiFi] currentReachabilityStatus] != NotReachable)) {
+            return;
+        }
+        
         if (self.imageInstantUploadEnabled || self.videoInstantUploadEnabled) {
             if (ACTIVE_USER.username != nil) {
                 if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {

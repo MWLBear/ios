@@ -47,6 +47,7 @@ typedef enum {
 @property BOOL imageInstantUpload;
 @property BOOL videoInstantUpload;
 @property BOOL backgroundInstantUpload;
+@property BOOL phoneNetCanInstantUpload;//
 @property (nonatomic, copy) NSString *pathInstantUpload;
 @property BOOL onlyWifiInstantUpload;
 @property NSTimeInterval timestampInstantUploadImage;

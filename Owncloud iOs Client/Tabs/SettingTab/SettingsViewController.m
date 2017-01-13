@@ -361,9 +361,9 @@
             
         case 3:
             if ([[InstantUpload instantUploadManager] imageInstantUploadEnabled] || [[InstantUpload instantUploadManager] videoInstantUploadEnabled]) {
-                n = 3;
+                n = 4;
             } else {
-                n = 2;
+                n = 3;
             }
             break;
         case 4:
@@ -756,7 +756,7 @@
             self.switchInstantUploadVideos.accessibilityLabel = ACS_SETTINGS_INSTANT_UPLOAD_VIDEOS_SWITCH;
             
             break;
-        case 2:
+        case 3:
             cell.textLabel.text = NSLocalizedString(@"title_background_instant_upload", nil);
             
             self.switchBackgroundInstantUpload = [[UISwitch alloc] initWithFrame:CGRectZero];
@@ -768,6 +768,19 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             self.switchBackgroundInstantUpload.accessibilityLabel = ACS_SETTINGS_BACKGROUND_INSTANT_UPLOADS_SWITCH;
             break;
+        case 2:  //仅仅在wifi下自动上传
+            
+            cell.textLabel.text = NSLocalizedString(@"onlywifi_instant_upload", nil);
+            self.switchCanNotInstantUpload = [[UISwitch alloc]init];
+            cell.accessoryView = self.switchCanNotInstantUpload;
+            [self.switchCanNotInstantUpload setOn:[[InstantUpload instantUploadManager] phoneNetInstantUploadEnabled] animated:YES];
+            
+            [self.switchCanNotInstantUpload addTarget:self action:@selector(changeSwitchCanNotInstantUpload:) forControlEvents:UIControlEventValueChanged];
+            
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            // self.switchCanNotInstantUpload.accessibilityLabel = ACS_SETTINGS_BACKGROUND_INSTANT_UPLOADS_SWITCH;
+            break;
+
         default:
             break;
     }
@@ -1682,6 +1695,53 @@
     [[InstantUpload instantUploadManager] setBackgroundInstantUploadEnabled:uiSwitch.on];
     [self refreshTable];
 }
+
+-(IBAction)changeSwitchCanNotInstantUpload:(id)sender{
+    
+    NSLog(@"111111");
+    UISwitch *uiSwitch = (UISwitch *)sender;
+    [[InstantUpload instantUploadManager] setphoneNetInstantUploadEnabled:uiSwitch.on];
+    
+    _manager = [AFNetworkReachabilityManager sharedManager];
+    
+    if (uiSwitch.on) {  //开
+        //__weak __typeof(self) weakSelf = self;
+        [_manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            
+            switch (status) {
+                case AFNetworkReachabilityStatusUnknown:{
+                    NSLog(@"未知网络");
+                    break;
+                }
+                case AFNetworkReachabilityStatusNotReachable:{
+                    NSLog(@"没有网络");
+                    break;
+                }
+                case AFNetworkReachabilityStatusReachableViaWWAN:{
+                    NSLog(@"手机自带网络");  //暂定
+                    //[[PHPhotoLibrary sharedPhotoLibrary]unregisterChangeObserver: [InstantUpload instantUploadManager]];
+                    [PHPhotoLibrary.sharedPhotoLibrary unregisterChangeObserver:[InstantUpload instantUploadManager]];
+                    
+                    break;
+                }
+                case AFNetworkReachabilityStatusReachableViaWiFi:{
+                    NSLog(@"WIFI");  //打开
+                    [[PHPhotoLibrary sharedPhotoLibrary]registerChangeObserver: [InstantUpload instantUploadManager]];
+                    
+                    break;
+                }
+            }
+        }];
+    }else
+    {
+        
+    }
+    [_manager startMonitoring];
+    [self refreshTable];
+    
+}
+
+
 
 #pragma mark - Semaphore
 
